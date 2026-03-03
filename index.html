@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InterleavePDF - Alternate PDF Page Merger</title>
+    <meta
+      id="metaDescription"
+      name="description"
+      content="Merge two PDFs by alternating pages without uploading files to any server."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/pdf-lib.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="background-shape shape-a"></div>
+    <div class="background-shape shape-b"></div>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="hero-top">
+          <p class="badge" data-i18n="badge">100% local in your browser</p>
+          <div class="hero-actions">
+            <a
+              class="repo-link"
+              href="https://github.com/ArtifexEt/InterleavePDF"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="repoLink"
+              >GitHub Repository</a
+            >
+            <div class="lang-switch" role="group" aria-label="Language selection" data-i18n-aria-label="languageSelector">
+              <button type="button" class="lang-btn" data-lang="pl" aria-label="Polish" title="Polish">🇵🇱</button>
+              <button type="button" class="lang-btn" data-lang="en" aria-label="English" title="English">🇬🇧</button>
+            </div>
+          </div>
+        </div>
+        <h1>InterleavePDF</h1>
+        <p class="subtitle" data-i18n="subtitle">
+          Merge two scans into one file: pages from A/B are interleaved alternately,
+          with no document upload to any server.
+        </p>
+      </header>
+
+      <section class="panel uploads">
+        <h2 data-i18n="uploadsTitle">Add two PDFs</h2>
+        <div class="drop-grid">
+          <label class="drop-zone" id="dropZoneA">
+            <input type="file" id="fileInputA" accept="application/pdf" hidden />
+            <span class="drop-label">PDF A</span>
+            <strong data-i18n="dropHint">Drag a file here or click</strong>
+            <small class="file-meta" id="fileMetaA" data-i18n="noFile">No file selected</small>
+          </label>
+
+          <label class="drop-zone" id="dropZoneB">
+            <input type="file" id="fileInputB" accept="application/pdf" hidden />
+            <span class="drop-label">PDF B</span>
+            <strong data-i18n="dropHint">Drag a file here or click</strong>
+            <small class="file-meta" id="fileMetaB" data-i18n="noFile">No file selected</small>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel options">
+        <h2 data-i18n="optionsTitle">Interleave settings</h2>
+        <div class="option-group">
+          <p data-i18n="startPrompt">Which file should start first?</p>
+          <div class="toggle-row">
+            <label class="chip">
+              <input type="radio" name="startWith" value="A" checked />
+              <span data-i18n="startA">Start with PDF A</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="startWith" value="B" />
+              <span data-i18n="startB">Start with PDF B</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <p data-i18n="reversePrompt">Optionally reverse page order (useful after the second scan):</p>
+          <div class="toggle-row">
+            <label class="chip">
+              <input type="checkbox" id="reverseA" />
+              <span data-i18n="reverseA">Reverse pages in PDF A</span>
+            </label>
+            <label class="chip">
+              <input type="checkbox" id="reverseB" />
+              <span data-i18n="reverseB">Reverse pages in PDF B</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel action">
+        <button id="mergeBtn" disabled data-i18n="mergeBtn">Merge and download PDF</button>
+        <p id="statusText" role="status" aria-live="polite" data-i18n="statusSelectBoth">
+          Select both files to continue.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
