@@ -9,6 +9,7 @@ const I18N = {
     languageSelector: 'Wybierz jezyk',
     badge: '100% lokalnie w przegladarce',
     repoLink: 'Repozytorium GitHub',
+    supportLink: 'Postaw kawe',
     subtitle:
       'Polacz dwa skany w jeden plik: strony A/B beda przeplatane, bez wysylania dokumentow na serwer.',
     uploadsTitle: 'Dodaj dwa pliki PDF',
@@ -41,6 +42,7 @@ const I18N = {
     languageSelector: 'Language selector',
     badge: '100% local in your browser',
     repoLink: 'GitHub Repository',
+    supportLink: 'Buy me a coffee',
     subtitle:
       'Merge two scans into one file: A/B pages will be interleaved, with no document upload to any server.',
     uploadsTitle: 'Add two PDFs',

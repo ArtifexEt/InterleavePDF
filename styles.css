@@ -283,6 +283,27 @@ h2 {
   gap: 12px;
 }
 
+.app-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px 8px 0;
+}
+
+.support-link {
+  color: rgba(18, 32, 52, 0.64);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.support-link:hover,
+.support-link:focus-visible {
+  color: #0a3f85;
+  border-color: rgba(10, 63, 133, 0.35);
+}
+
 #mergeBtn {
   border: 0;
   border-radius: 14px;
@@ -360,6 +381,10 @@ h2 {
   .app-shell {
     margin: 22px auto 34px;
     gap: 14px;
+  }
+
+  .app-footer {
+    justify-content: center;
   }
 
   .hero,
