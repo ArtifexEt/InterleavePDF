@@ -131,6 +131,14 @@ h2 {
   line-height: 1.45;
 }
 
+.seo-hint {
+  margin: 10px 0 0;
+  color: #5a6d88;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  max-width: 68ch;
+}
+
 .lang-switch {
   display: inline-flex;
   align-items: center;

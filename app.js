@@ -4,14 +4,19 @@ const STORAGE_LANG_KEY = 'interleavepdf_lang';
 
 const I18N = {
   pl: {
-    metaTitle: 'InterleavePDF - Naprzemienne laczenie stron PDF',
-    metaDescription: 'Polacz dwa PDF-y naprzemiennie bez wysylania plikow na serwer.',
+    metaTitle: 'InterleavePDF - Manual Duplex Scan i naprzemienne laczenie PDF',
+    metaDescription:
+      'Narzedzie do manual duplex scan: polacz PDF ze stronami nieparzystymi i parzystymi naprzemiennie, lokalnie w przegladarce.',
+    metaKeywords:
+      'manual duplex scan, manual duplex scanning, laczenie skanow pdf, przeplatanie stron pdf, polacz skan parzyste nieparzyste',
     languageSelector: 'Wybierz jezyk',
     badge: '100% lokalnie w przegladarce',
     repoLink: 'Repozytorium GitHub',
     supportLink: 'Postaw kawe',
     subtitle:
       'Polacz dwa skany w jeden plik: strony A/B beda przeplatane, bez wysylania dokumentow na serwer.',
+    seoHint:
+      'Dla manual duplex scan: zeskanuj strony nieparzyste do PDF A i parzyste do PDF B, a potem polacz je naprzemiennie.',
     uploadsTitle: 'Dodaj dwa pliki PDF',
     dropHint: 'Przeciagnij plik tutaj lub kliknij',
     noFile: 'Nie wybrano pliku',
@@ -37,14 +42,19 @@ const I18N = {
     outputPrefix: 'przeplot',
   },
   en: {
-    metaTitle: 'InterleavePDF - Alternate PDF Page Merger',
-    metaDescription: 'Merge two PDFs by alternating pages without uploading files to any server.',
+    metaTitle: 'InterleavePDF - Manual Duplex Scan PDF Merger',
+    metaDescription:
+      'Tool for manual duplex scan workflows: merge odd/even scan PDFs by alternating pages locally in your browser.',
+    metaKeywords:
+      'manual duplex scan, manual duplex scanning, interleave pdf, merge scanned pages, odd even scan merge, duplex scan merge',
     languageSelector: 'Language selector',
     badge: '100% local in your browser',
     repoLink: 'GitHub Repository',
     supportLink: 'Buy me a coffee',
     subtitle:
       'Merge two scans into one file: A/B pages will be interleaved, with no document upload to any server.',
+    seoHint:
+      'For manual duplex scan: scan odd pages to PDF A and even pages to PDF B, then merge alternately.',
     uploadsTitle: 'Add two PDFs',
     dropHint: 'Drag a file here or click',
     noFile: 'No file selected',
@@ -97,6 +107,11 @@ const el = {
   mergeBtn: document.getElementById('mergeBtn'),
   statusText: document.getElementById('statusText'),
   metaDescription: document.getElementById('metaDescription'),
+  metaKeywords: document.getElementById('metaKeywords'),
+  ogTitle: document.getElementById('ogTitle'),
+  ogDescription: document.getElementById('ogDescription'),
+  twitterTitle: document.getElementById('twitterTitle'),
+  twitterDescription: document.getElementById('twitterDescription'),
   langButtons: Array.from(document.querySelectorAll('.lang-btn')),
   i18nNodes: Array.from(document.querySelectorAll('[data-i18n]')),
   i18nAriaNodes: Array.from(document.querySelectorAll('[data-i18n-aria-label]')),
@@ -140,10 +155,28 @@ function setLanguage(lang, persist) {
     persistLang(state.lang);
   }
 
+  const translatedTitle = t('metaTitle');
+  const translatedDescription = t('metaDescription');
+
   document.documentElement.lang = state.lang;
-  document.title = t('metaTitle');
+  document.title = translatedTitle;
   if (el.metaDescription) {
-    el.metaDescription.content = t('metaDescription');
+    el.metaDescription.content = translatedDescription;
+  }
+  if (el.metaKeywords) {
+    el.metaKeywords.content = t('metaKeywords');
+  }
+  if (el.ogTitle) {
+    el.ogTitle.content = translatedTitle;
+  }
+  if (el.ogDescription) {
+    el.ogDescription.content = translatedDescription;
+  }
+  if (el.twitterTitle) {
+    el.twitterTitle.content = translatedTitle;
+  }
+  if (el.twitterDescription) {
+    el.twitterDescription.content = translatedDescription;
   }
 
   for (const node of el.i18nNodes) {
